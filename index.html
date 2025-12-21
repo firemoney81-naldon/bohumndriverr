@@ -3,13 +3,12 @@
     {
         "@context": "http://schema.org",
         "@type": "FinancialService",
-        "name": "2026 대한민국 운전자보험 통합 계산 센터",
-        "description": "운전자보험계산을 통한 개인별 최적 보험료 산출 및 법률 비용 보장 분석 서비스",
-        "url": "https://example.com/driver-insurance-2026",
-        "telephone": "+82-2-1234-5678",
+        "name": "운전자보험계산 전문 가이드 센터",
+        "description": "운전자보험료 계산 및 보장 내역 비교 분석 서비스 제공",
+        "url": "https://example.com/driver-insurance",
+        "telephone": "1588-0000",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "서울특별시 중구 세종대로",
             "addressLocality": "Seoul",
             "addressCountry": "KR"
         }
@@ -17,370 +16,294 @@
     </script>
 
     <style>
-        /* 디자인: 부드러운 색감 및 명확한 시각적 계층 구조 */
+        /* CSS Variables for Soft & Modern Palette */
         :root {
-            --soft-blue: #ebf2ff;
-            --deep-blue: #3a7bd5;
-            --accent-purple: #6a11cb;
-            --text-dark: #222222;
-            --text-gray: #4a4a4a;
-            --white: #ffffff;
-            --border-color: #e1e8f0;
+            --primary-color: #3a86ff;
+            --secondary-color: #8338ec;
+            --bg-light: #f8f9fa;
+            --text-dark: #212529;
+            --accent-color: #ff006e;
+            --border-radius: 12px;
         }
 
         body {
-            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
-            background-color: #fcfdfe;
+            font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
+            line-height: 1.8;
             color: var(--text-dark);
-            line-height: 1.9;
             margin: 0;
             padding: 0;
+            background-color: var(--bg-light);
         }
 
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Modern Header */
         header {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: var(--white);
-            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 20px;
             text-align: center;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
         }
 
         header h1 {
             font-size: 2.8rem;
-            margin-bottom: 25px;
-            letter-spacing: -1px;
+            font-weight: 800;
+            margin-bottom: 20px;
         }
 
-        .main-wrapper {
-            max-width: 1000px;
-            margin: -50px auto 60px;
-            background: var(--white);
-            border-radius: 25px;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
-            overflow: hidden;
-            padding: 50px;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 2px solid var(--soft-blue);
-            padding-bottom: 20px;
-            margin-bottom: 50px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-gray);
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        /* 입력란 및 계산기 섹션 (체류 시간 증대용) */
-        .calc-form-container {
-            background-color: var(--soft-blue);
+        /* Interactive Calculation Form */
+        .calc-form {
+            background: white;
             padding: 40px;
-            border-radius: 20px;
-            margin-bottom: 60px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-top: -40px;
+            margin-bottom: 40px;
         }
 
-        .input-grid {
+        .calc-form h2 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-bottom: 30px;
+            gap: 20px;
         }
 
-        .input-box label {
-            display: block;
-            margin-bottom: 10px;
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
             font-weight: 600;
+            margin-bottom: 8px;
         }
 
-        .input-box input, .input-box select {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
+        input, select, textarea {
+            padding: 12px;
+            border: 2px solid #eee;
+            border-radius: 8px;
             font-size: 1rem;
         }
 
-        .cta-submit {
-            background: var(--deep-blue);
+        .btn-submit {
+            grid-column: span 2;
+            background-color: var(--primary-color);
             color: white;
+            padding: 15px;
             border: none;
-            padding: 20px;
-            width: 100%;
-            border-radius: 12px;
-            font-size: 1.3rem;
-            font-weight: 800;
+            border-radius: 8px;
+            font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
+            margin-top: 10px;
         }
 
-        /* 텍스트 컨텐츠 스타일 */
-        article section {
-            margin-bottom: 60px;
-        }
-
-        h2 {
-            font-size: 2rem;
-            color: var(--deep-blue);
-            border-bottom: 3px solid var(--soft-blue);
-            padding-bottom: 10px;
+        /* Information Section */
+        section {
+            background: white;
+            padding: 40px;
             margin-bottom: 30px;
+            border-radius: var(--border-radius);
         }
 
-        h3 {
-            font-size: 1.5rem;
-            margin-top: 40px;
-            color: #333;
-        }
-
-        p {
-            margin-bottom: 20px;
-            text-align: justify;
+        h2, h3 {
+            color: var(--secondary-color);
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 30px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            margin: 20px 0;
         }
 
-        table th, table td {
-            border: 1px solid var(--border-color);
-            padding: 18px;
+        th, td {
+            border: 1px solid #eee;
+            padding: 15px;
             text-align: center;
         }
 
-        table th {
-            background-color: #f8faff;
-            color: var(--deep-blue);
-            font-weight: 700;
+        th {
+            background-color: #f1f3f5;
         }
 
-        .link-group {
-            background: #fdfdfd;
-            border: 1px dashed #ccc;
-            padding: 30px;
-            border-radius: 15px;
-            margin-top: 50px;
+        .external-links {
+            background: #e9ecef;
+            padding: 20px;
+            border-radius: 8px;
         }
 
-        .link-group ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .link-group li {
-            margin-bottom: 15px;
-        }
-
-        .link-group a {
-            color: var(--deep-blue);
-            text-decoration: underline;
+        .external-links a {
+            display: inline-block;
+            margin-right: 15px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
         }
 
         footer {
             text-align: center;
-            padding: 50px;
-            background: #f1f3f5;
-            color: #777;
+            padding: 40px;
+            color: #888;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>2026년형 운전자보험계산 통합 정보 시스템</h1>
-    <p>변화하는 교통법규에 대응하는 가장 현명한 방법, 최적의 보장 설계를 지금 확인하십시오.</p>
+    <h1>실시간 운전자보험계산 및 보장 분석</h1>
+    <p>복잡한 보험 약관부터 나에게 꼭 필요한 특약까지 상세하게 안내해 드립니다.</p>
 </header>
 
-<div class="main-wrapper">
-    <nav>
-        <a href="#section1">운전자보험계산의 필요성</a>
-        <a href="#section2">보장 범위 분석</a>
-        <a href="#section3">보험료 산출 비교</a>
-        <a href="#section4">법률 가이드</a>
-    </nav>
-
-    <section class="calc-form-container">
-        <h2>실시간 맞춤형 운전자보험계산기</h2>
-        <div class="input-grid">
-            <div class="input-box">
-                <label>이름 (식별용)</label>
-                <input type="text" placeholder="성함을 입력하세요">
-            </div>
-            <div class="input-box">
-                <label>연락처</label>
-                <input type="tel" placeholder="010-0000-0000">
-            </div>
-            <div class="input-box">
-                <label>생년월일 (6자리)</label>
-                <input type="text" placeholder="YYMMDD">
-            </div>
-            <div class="input-box">
-                <label>성별 선택</label>
+<div class="container">
+    <section class="calc-form">
+        <h2>운전자보험료 모의 계산기</h2>
+        <div class="form-grid">
+            <div class="form-group">
+                <label>운전자 성별</label>
                 <select>
                     <option>남성</option>
                     <option>여성</option>
                 </select>
             </div>
-            <div class="input-box">
+            <div class="form-group">
+                <label>생년월일 (8자리)</label>
+                <input type="number" placeholder="예: 19900101">
+            </div>
+            <div class="form-group">
                 <label>운전 용도</label>
                 <select>
-                    <option>자가용 (출퇴근/가정용)</option>
-                    <option>영업용 (화물/택시/배달)</option>
+                    <option>자가용</option>
+                    <option>영업용 (화물/택시)</option>
                 </select>
             </div>
-            <div class="input-box">
-                <label>희망 보장 금액</label>
+            <div class="form-group">
+                <label>희망 보장 금액 (교통사고처리지원금)</label>
                 <select>
-                    <option>기본형 (1억 원)</option>
-                    <option>표준형 (2억 원)</option>
-                    <option>프리미엄 (3억 원 이상)</option>
+                    <option>1억 원</option>
+                    <option>1억 5천만 원</option>
+                    <option>2억 원</option>
                 </select>
             </div>
-            <div class="input-box">
-                <label>과거 사고 이력</label>
-                <select>
-                    <option>최근 3년 내 무사고</option>
-                    <option>1회 사고 있음</option>
-                    <option>2회 이상 사고 있음</option>
-                </select>
+            <div class="form-group" style="grid-column: span 2;">
+                <label>운전 경력 및 사고 이력 (상세 기입 시 정확도 향상)</label>
+                <textarea rows="4" placeholder="최근 3년 내 사고 이력이나 보험 가입 경력을 적어주세요."></textarea>
             </div>
-            <div class="input-box">
-                <label>주요 주행 지역</label>
-                <input type="text" placeholder="예: 경기도 남양주시">
-            </div>
+            <button class="btn-submit">실시간 보험료 산출하기</button>
         </div>
-        <button class="cta-submit" onclick="alert('2026년 최신 요율에 따른 데이터 분석을 시작합니다.')">상세 보험료 결과 보기</button>
     </section>
 
-    <article>
-        <section id="section1">
-            <h2>운전자보험계산 및 가입이 필수적인 이유</h2>
-            <p>
-                2026년을 기점으로 도로교통법은 보행자 보호 의무를 더욱 강화하는 방향으로 개정되었습니다. 운전자보험계산은 단순히 매달 지출되는 비용을 확인하는 과정이 아니라, 예기치 못한 사고 발생 시 운전자의 경제적 파산을 막아주는 안전장치를 설계하는 과정입니다. 자동차보험이 타인의 신체와 차량에 대한 배상 책임(민사)을 주 목적으로 한다면, 운전자보험은 운전자 본인에게 부과되는 형사적, 행정적 책임을 보장합니다.
-            </p>
-            <p>
-                특히 12대 중과실 사고는 자동차보험의 가입 여부와 관계없이 형사 처벌의 대상이 됩니다. 신호위반, 중앙선 침범, 속도위반, 앞지르기 방법 위반, 철길건널목 통과방법 위반, 횡단보도 보행자 보호의무 위반, 무면허 운전, 음주 운전, 보도 침범, 승객 추락 방지의무 위반, 어린이 보호구역 안전운전 의무 위반, 화물 고정조치 위반 등이 이에 해당합니다. 이 중 음주와 무면허를 제외한 사고에서 운전자보험은 강력한 법률적 방어막이 되어줍니다.
-            </p>
-        </section>
+    <section id="content-main">
+        <h2>운전자보험계산 시 반드시 확인해야 할 핵심 요소</h2>
+        <p>운전자보험계산은 단순히 가격을 확인하는 과정이 아니라, 사고 시 발생할 수 있는 형사적 책임을 대비하기 위한 필수적인 단계입니다. 자동차보험이 상대방의 물적, 인적 피해를 보상한다면 운전자보험은 운전자 본인의 형사적 합의금, 벌금, 변호사 선임 비용을 중점적으로 보장합니다.</p>
+        
+        <h3>1. 필수 보장 3가지 항목</h3>
+        <p>운전자보험을 설계할 때 가장 핵심이 되는 항목은 다음과 같습니다.</p>
+        <ul>
+            <li>교통사고처리지원금(형사합의금): 피해자가 사망하거나 중상해를 입었을 때 합의금 지원</li>
+            <li>변호사선임비용: 정식 기소되어 재판을 받을 경우 발생하는 전문 변호사 선임료 보장</li>
+            <li>벌금(대인/대물): 스쿨존 사고 등 12대 중과실 사고 시 법원에서 확정된 벌금 지원</li>
+        </ul>
 
-        <section id="section2">
-            <h2>주요 보장 담보 및 2026년 개정 사항</h2>
-            <p>
-                과거의 운전자 보험 상품들은 보장 한도가 낮아 최근의 높아진 형사 합의금을 충당하기에 부족한 경우가 많습니다. 전문가들은 주기적으로 운전자보험계산을 수행하여 최신 담보로 갱신할 것을 권장합니다.
-            </p>
-            <h3>1. 교통사고처리지원금 (형사합의금)</h3>
-            <p>
-                피해자가 사망하거나 중상해를 입었을 때, 혹은 12대 중과실로 인해 피해자가 일정 기간 이상의 치료를 요할 때 지급되는 비용입니다. 최근에는 보장 한도가 2억 원에서 최대 3억 원까지 확대되었으며, 과거와 달리 합의금을 운전자가 먼저 마련할 필요 없이 보험사에서 피해자에게 직접 지급하는 선지급 시스템이 도입되었습니다.
-            </p>
-            <h3>2. 변호사 선임 비용 (경찰 조사 단계 포함)</h3>
-            <p>
-                과거에는 구속되거나 기소된 경우에만 변호사 비용을 지원했으나, 현재는 경찰 조사 단계(불기소 포함)부터 변호사를 선임할 수 있도록 보장 범위가 넓어졌습니다. 이는 초기 대응이 중요한 형사 사건에서 운전자의 권익을 보호하는 핵심 요소입니다.
-            </p>
-            <h3>3. 자동차사고 부상 치료비 (자부상)</h3>
-            <p>
-                교통사고로 인해 운전자가 부상을 입었을 때, 상해 등급(1급~14급)에 따라 정해진 금액을 지급합니다. 14급과 같은 가벼운 타박상이나 염좌 시에도 지급되므로 실질적인 혜택 체감도가 매우 높은 담보입니다.
-            </p>
-        </section>
+        
 
-        <section id="section3">
-            <h2>2026년 보험사별 운전자보험 비교 분석 자료</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>구분 항목</th>
-                        <th>A사 (안심 플랜)</th>
-                        <th>B사 (실속 플랜)</th>
-                        <th>C사 (프리미엄)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>월 예상 보험료</td>
-                        <td>12,500원</td>
-                        <td>9,800원</td>
-                        <td>21,000원</td>
-                    </tr>
-                    <tr>
-                        <td>교통사고처리지원금</td>
-                        <td>2억 원</td>
-                        <td>1.5억 원</td>
-                        <td>3억 원</td>
-                    </tr>
-                    <tr>
-                        <td>변호사선임비용</td>
-                        <td>5,000만 원</td>
-                        <td>3,000만 원</td>
-                        <td>7,000만 원</td>
-                    </tr>
-                    <tr>
-                        <td>벌금 (대인/대물)</td>
-                        <td>3,000만 / 500만</td>
-                        <td>2,000만 / 500만</td>
-                        <td>3,000만 / 500만</td>
-                    </tr>
-                    <tr>
-                        <td>부상치료비 (14급)</td>
-                        <td>30만 원</td>
-                        <td>10만 원</td>
-                        <td>50만 원</td>
-                    </tr>
-                    <tr>
-                        <td>6주 미만 합의금</td>
-                        <td>1,000만 원</td>
-                        <td>500만 원</td>
-                        <td>1,500만 원</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+        <h3>2. 나이 및 차종별 평균 보험료 비교</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>구분</th>
+                    <th>20대 평균</th>
+                    <th>30대 평균</th>
+                    <th>40대 평균</th>
+                    <th>50대 평균</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>표준형 (1만 원대)</td>
+                    <td>9,800원</td>
+                    <td>10,200원</td>
+                    <td>10,500원</td>
+                    <td>11,000원</td>
+                </tr>
+                <tr>
+                    <td>고급형 (2만 원대)</td>
+                    <td>21,000원</td>
+                    <td>22,500원</td>
+                    <td>23,000원</td>
+                    <td>24,500원</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 
-        <section id="section4">
-            <h2>자주 묻는 질문과 답변 (FAQ)</h2>
-            <p><strong>Q1. 자동차보험에 법률 지원 특약을 넣는 것과 별도의 운전자보험계산 후 가입하는 것의 차이는 무엇인가요?</strong></p>
-            <p>A1. 자동차보험의 특약은 해당 차량을 운전할 때만 보장받는 경우가 많습니다. 반면 별도의 운전자보험은 타인의 차량을 운전하거나, 대중교통 이용 중 발생하는 사고, 보행 중 사고 등 '사람'을 기준으로 광범위하게 보장하므로 훨씬 유리합니다.</p>
-            
-            <p><strong>Q2. 비갱신형과 갱신형 중 어떤 것이 유리한가요?</strong></p>
-            <p>A2. 장기적으로 보장을 유지하고자 한다면 초기 보험료는 다소 높더라도 만기까지 보험료 인상이 없는 비갱신형이 유리합니다. 반면, 짧은 기간 저렴한 비용으로 고액의 보장을 원한다면 갱신형을 선택하여 주기적으로 운전자보험계산을 다시 하는 방법이 있습니다.</p>
-        </section>
+    <section>
+        <h2>네이버 이용자가 함께 많이 찾는 정보</h2>
+        <p>운전자보험계산을 검색하시는 분들은 다음과 같은 카테고리의 정보를 함께 확인하고 계십니다. 관련 용어를 숙지하여 최적의 선택을 하시기 바랍니다.</p>
+        
+        <h3>연관 키워드 및 전문 용어 정리</h3>
+        <ul>
+            <li><strong>민식이법 운전자보험:</strong> 어린이 보호구역 내 사고 시 강화된 처벌 수위에 맞춘 보장 한도 상향 여부</li>
+            <li><strong>자동차보험 운전자보험 차이:</strong> 의무 가입 여부와 보상 대상(타인 vs 본인 형사책임)의 명확한 구분</li>
+            <li><strong>비갱신형 운전자보험:</strong> 보험료 변동 없이 만기까지 유지 가능한 상품의 장단점</li>
+            <li><strong>부부 동반 가입:</strong> 한 명의 증권으로 부부가 함께 보장받아 비용을 절감하는 방식</li>
+        </ul>
+    </section>
 
-        <section>
-            <h2>연관 검색어 및 함께 찾는 정보</h2>
-            <p>
-                사용자들은 운전자보험계산 외에도 다음과 같은 키워드에 대해 높은 관심을 보이고 있습니다.
-            </p>
-            <ul>
-                <li>자동차보험료 계산기 활용법</li>
-                <li>민식이법 개정안 상세 내용</li>
-                <li>착한운전 마일리지 신청 방법</li>
-                <li>음주운전 면허 취소 구제 절차</li>
-                <li>영업용 운전자보험 가입 조건</li>
-                <li>비갱신형 운전자보험 순위 비교</li>
-                <li>가족 일상생활 배상책임 특약 활용</li>
-            </ul>
-        </section>
+    <section>
+        <h2>전문적인 분석: SOLID 및 P-Rank 대응 가이드</h2>
+        <p>보험료는 가입자의 직업 급수, 연령, 그리고 보장 범위에 따라 천차만별입니다. 최근 도로교통법 개정으로 인해 과거 1천만 원 수준이었던 벌금 한도가 3천만 원으로, 교통사고처리지원금이 최대 2억 원까지 확대되는 추세입니다. 기존 가입자들도 현재의 법적 기준에 맞춰 리모델링이 필요합니다.</p>
+        
+        <h3>운전자보험 상위노출을 위한 체크리스트</h3>
+        <ol>
+            <li>보험 다모아를 통한 공신력 있는 가격 비교</li>
+            <li>금융감독원의 보험 가이드라인 준수 여부 확인</li>
+            <li>약관 내 중대법규 위반 시 면책 조항 상세 검토</li>
+        </ol>
+    </section>
 
-        <div class="link-group">
-            <h3>공인 기관 자료 및 신뢰할 수 있는 외부 링크</h3>
-            <ul>
-                <li><a href="https://www.klac.or.kr" target="_blank">대한법률구조공단 - 교통사고 관련 법률 상담 및 판례 조회</a></li>
-                <li><a href="https://www.insure.or.kr" target="_blank">손해보험협회 공시실 - 보험 상품별 보장 내용 및 요율 비교</a></li>
-                <li><a href="https://www.fss.or.kr" target="_blank">금융감독원 파인(FINE) - 금융소비자 정보 포털 및 보험 다모아</a></li>
-                <li><a href="https://www.koroad.or.kr" target="_blank">도로교통공단 - 교통사고 통계 및 안전 교육 자료</a></li>
-                <li><a href="https://namu.wiki/w/%EC%9A%B4%EC%A0%84%EC%9E%90%EB%B3%B4%ED%97%98" target="_blank">나무위키 - 운전자보험의 정의 및 특징 정리</a></li>
-            </ul>
-        </div>
-    </article>
+    <section class="external-links">
+        <h2>신뢰할 수 있는 외부 정보 참조</h2>
+        <p>더 상세하고 공신력 있는 정보는 아래의 국가 기관 및 전문 포털에서 확인하실 수 있습니다.</p>
+        <a href="https://www.e-insmarket.or.kr" target="_blank">보험다모아(공식 보험비교)</a>
+        <a href="https://www.fss.or.kr" target="_blank">금융감독원</a>
+        <a href="https://namu.wiki/w/%EC%93%B4%EC%A0%84%EC%9E%90%EB%B3%B4%ED%97%98" target="_blank">나무위키: 운전자보험</a>
+        <a href="https://www.kidi.or.kr" target="_blank">보험개발원</a>
+        <a href="https://www.klac.or.kr" target="_blank">대한법률구조공단</a>
+    </section>
+
+    <section>
+        <h2>자주 묻는 질문 (FAQ)</h2>
+        <p><strong>Q: 자동차보험이 있는데 운전자보험이 왜 필요한가요?</strong><br>
+        A: 자동차보험은 주로 민사상 책임(차량 수리, 치료비)을 담당합니다. 하지만 중과실 사고 시 발생하는 형사상 책임(벌금, 합의금)은 자동차보험에서 보장하지 않으므로 운전자보험이 별도로 필요합니다.</p>
+        
+        <p><strong>Q: 만기환급형과 순수보장형 중 무엇이 유리한가요?</strong><br>
+        A: 운전자보험은 법 개정이 잦아 보장 내용이 수시로 변합니다. 따라서 높은 보험료의 환급형보다는 저렴한 순수보장형으로 가입하고 추후 법 개정에 맞춰 갈아타는 것이 경제적입니다.</p>
+    </section>
 </div>
 
 <footer>
-    <p>&copy; 2026 운전자보험 정밀 계산 센터. 본 페이지의 정보는 최신 법규를 바탕으로 작성되었으나, 실제 가입 시 상품 설명서를 반드시 확인하시기 바랍니다.</p>
+    <p>&copy; 2026 운전자보험 분석 센터. All Rights Reserved. 본 정보는 정보 전달 목적으로 작성되었습니다.</p>
 </footer>
 
-</body>
-</html>
+<script>
+    // Search Suggestion Logic
+    const keywords = ['운전자보험계산', '운전자보험비교', '운전자보험다이렉트', '보험료비교사이트', '12대중과실벌금'];
+    
+    // 단순 예시 로직 (실제 구현 시 input 이벤트와 연결)
+    console.log("SEO 키워드 로딩 완료:", keywords);
+</script>
+
+    
